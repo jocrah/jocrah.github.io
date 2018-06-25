@@ -4,6 +4,7 @@
     <title>Currency Converter</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/index.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>
 
@@ -13,13 +14,45 @@
             <div class="mdl-layout__header-row">
                 <!-- Title -->
                 <span class="mdl-layout-title">Currency Converter</span>
-                <!-- Add spacer, to align navigation to the right -->
-                <div class="mdl-layout-spacer"></div>
             </div>
         </header>
 
         <main class="mdl-layout__content">
             <div class="page-content">
+                <div class="mdl-grid">
+                    <div class="mdl-layout-spacer"></div>
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <div class="from">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="from-input">
+                                <label class="mdl-textfield__label" for="sample2">From</label>
+                                <span class="mdl-textfield__error">Input is not a number</span>
+                            </div>
+                            <select name="from-select">
+                                <option>Select Currency</option>
+                            </select>
+                        </div>
+                        <div class="to">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="to-input">
+                                <label class="mdl-textfield__label" for="sample2">To</label>
+                                <span class="mdl-textfield__error">Input is not a number</span>
+                            </div>
+                            <select name="to-select">
+                                <option>Select Currency</option>
+                            </select>
+                        </div>
+                        <div class="button-hub center-align">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                Convert
+                            </button>
+                        </div>
+
+
+                    </div>
+                    <div class="mdl-layout-spacer"></div>
+                </div>
+
 
             </div>
         </main>
