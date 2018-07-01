@@ -10,8 +10,11 @@ let toSelect;
 let inputAmount;
 let outputAmount;
 let dateRetrievedRight;
-let dateRetrievedLeft;
-let successButtonClick =false;
+let dateRetrievedLeft; 
+let inputSelect;
+let outputSelect;
+let successButtonClick = false;
+let amount;
 
 
 /**
@@ -110,7 +113,7 @@ function getFromLocalDatabase(dbPromise, mode) {
 /**
  * Check if window is loaded and set things up
  */
-window.addEventListener('load', ()=>{ 
+window.addEventListener('load', () => {
   fromSelect = document.getElementById('from-select');
   toSelect = document.getElementById('to-select');
   inputAmount = document.getElementById('input-amount');
@@ -150,7 +153,6 @@ window.addEventListener('load', ()=>{
     getFromLocalDatabase(dbPromise, 0);
   }
 
-
   /**
    * Action for button when clicked
    */
@@ -158,10 +160,10 @@ window.addEventListener('load', ()=>{
   button.addEventListener('click', () => {
     let convParameters = '';
     //build parameters
-    let amount = parseFloat(inputAmount.value);
+    amount = parseFloat(inputAmount.value);
 
-    let inputSelect = fromSelect.options[fromSelect.selectedIndex].value;
-    let outputSelect = toSelect.options[toSelect.selectedIndex].value;
+    inputSelect = fromSelect.options[fromSelect.selectedIndex].value;
+    outputSelect = toSelect.options[toSelect.selectedIndex].value;
     let valid = (inputSelect !== '' && outputSelect !== '' && inputSelect !== null && outputSelect !== null);
     if (valid == true) {
       convParameters = `convert?q=${inputSelect}_${outputSelect}`;

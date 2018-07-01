@@ -1,5 +1,5 @@
 //Service worker ES6 magic
-let staticCacheName = 'jocrah-currency-cache-v34';
+let staticCacheName = 'jocrah-currency-cache-v35';
 
 self.addEventListener('install', event => {
   let filesToCache = [
