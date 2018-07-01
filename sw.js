@@ -1,9 +1,10 @@
 //Service worker ES6 magic
+let staticCacheName = 'jocrah-currency-cache-v34';
 
-
-self.addEventListener('install', function(event) {
-  var filesToCache = [
-    '/',
+self.addEventListener('install', event => {
+  let filesToCache = [
+    '/', //for online version
+    // '/jocrah.github.io/', //for offline version
     'css/index.css',
     'index.js',
     'css/icon.css',
@@ -11,23 +12,29 @@ self.addEventListener('install', function(event) {
     'js/material.min.js',
     'index.html'
   ];
-  
-  var staticCacheName ='pages-cache-v1';  
+
   console.log('Attempting to install service worker and cache static assets');
   event.waitUntil(
     caches.open(staticCacheName)
-    .then(function(cache){
-      return cache.addAll(filesToCache);
-    })
+      .then(cache => cache.addAll(filesToCache))
   );
   console.log('Installed', event);
 });
 
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => Promise.all(
+      cacheNames.filter(cacheName => cacheName.startsWith('jocrah-currency-cache') &&
+        cacheName != staticCacheName).map(cacheName => caches.delete(cacheName))
+    ))
+  )
+});
 
-self.addEventListener('fetch', function(event){
+
+self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then(function(response){
-      if(response){
+    caches.match(event.request).then(response => {
+      if (response) {
         console.log('from cache');
         return response;
       }
@@ -36,5 +43,3 @@ self.addEventListener('fetch', function(event){
     })
   )
 });
-
-
