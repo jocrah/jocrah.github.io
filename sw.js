@@ -5,6 +5,7 @@ self.addEventListener('install', event => {
   let filesToCache = [
     '/', //for online version
     // '/jocrah.github.io/', //for offline version
+    'js/idb.js',
     'css/index.css',
     'index.js',
     'css/icon.css',
